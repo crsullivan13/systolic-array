@@ -2,8 +2,6 @@
 #ifndef CELL_HPP
 #define CELL_HPP
 
-
-
 class Cell {
     uint32_t storage;
 

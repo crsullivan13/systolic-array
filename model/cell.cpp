@@ -5,4 +5,4 @@ void Cell::compute() {
 
     out_a = in_a;
     out_b = in_b;
-} 
+}
