@@ -2,13 +2,14 @@
 #ifndef CELL_HPP
 #define CELL_HPP
 
+// Basic unit of systolic array, also known as processing element
 class Cell {
-    uint32_t storage;
+    // Is initalizing stuff like this good style?
+    uint32_t storage{};
 
-    uint32_t in_a, in_b;
+    uint32_t in_a{}, in_b{};
 
-    uint32_t out_a, out_b;
-
+    uint32_t out_a{}, out_b{};
 public:
     uint32_t get_a(){return out_a;}
     uint32_t get_b(){return out_b;}

@@ -1,16 +1,9 @@
-#include <iostream>
-
-#include "cell.hpp"
-
-void step_log(Cell &cell) {
-    std::cout << "Out a: " << cell.get_a() << " Out b: " << cell.get_b() << " Storage: " << cell.get_storage() << std::endl;
-}
+#include "sysarray.hpp"
 
 int main(int, char**){
-    Cell cell_one;
+    SysArray array(3,3);
 
-    cell_one.inp_a(1);
-    cell_one.inp_b(2);
-    cell_one.compute();
-    step_log(cell_one);
+    array.logState();
+
+    return 0;
 }
