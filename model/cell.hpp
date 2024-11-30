@@ -17,6 +17,8 @@ public:
     void inp_b(uint32_t inp){in_b = inp;}
 
     uint32_t get_storage(){return storage;}
+    // For weight stationary
+    void inp_storage(uint32_t inp){storage = inp;}
 
     void compute();
 };

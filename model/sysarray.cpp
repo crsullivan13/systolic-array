@@ -23,4 +23,22 @@ void SysArray::logState() {
         }
         std::cout << std::endl;
     }
+    std::cout << std::endl;
+}
+
+// Loads weights for weight stationary matrix
+void SysArray::loadWeights(const std::vector<std::vector<uint32_t>>& weights) {
+    if ( weights.size() != mesh.size() ) {
+        throw std::invalid_argument("Weights row dimension doesn't match mesh");
+    }
+
+    for ( int i = 0; i < mesh.size(); i++ ) {
+        if ( weights[i].size() != mesh[i].size() ) {
+            throw std::invalid_argument("Weights column dimension doesn't match mesh");
+        }
+
+        for ( int j = 0; j < mesh[i].size(); j++ ) {
+            mesh[i][j].inp_storage(weights[i][j]);
+        }
+    }
 }

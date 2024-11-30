@@ -12,7 +12,11 @@ class SysArray {
 public:
     SysArray(int n, int m);
 
+    // Loggin util
     void logState();
+
+    // Mesh operations
+    void loadWeights(const std::vector<std::vector<uint32_t>>& weights);
 
 };
 
