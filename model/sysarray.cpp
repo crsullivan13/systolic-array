@@ -23,6 +23,16 @@ void SysArray::logState() {
         }
         std::cout << std::endl;
     }
+
+    std::cout << std::endl;
+
+    for ( auto row : inputBuffer ) {
+        std::cout << "| ";
+        for ( auto input : row ) {
+            std::cout << input << " | ";
+        }
+        std::cout << std::endl;
+    }
     std::cout << std::endl;
 }
 
@@ -40,5 +50,28 @@ void SysArray::loadWeights(const std::vector<std::vector<uint32_t>>& weights) {
         for ( int j = 0; j < mesh[i].size(); j++ ) {
             mesh[i][j].inp_storage(weights[i][j]);
         }
+    }
+}
+
+void SysArray::initInputs(const std::vector<std::vector<uint32_t>> matrix) {
+    if ( matrix.size() != mesh.size() ) {
+        throw std::invalid_argument("Matrix column dimension doesn't match mesh");
+    }
+
+    for ( int i = mesh.size(); i > 0; i-- ) {
+        if ( matrix[mesh.size()-i].size() != mesh.size() ) {
+            throw std::invalid_argument("Matrix row dimension doesn't match mesh");
+        }
+
+        std::vector<uint32_t> temp_row;
+        for ( int j = 0; j < mesh.size(); j++ ) {
+            // Need to initalize the lower rows with 0s in certain spots to properly time things out
+            if ( j < ( mesh.size() - i ) ) {
+                temp_row.push_back(0);
+            } else {
+                temp_row.push_back(matrix[mesh.size()-i][j]);
+            }
+        }
+        inputBuffer.push_back(temp_row);
     }
 }

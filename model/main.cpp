@@ -16,6 +16,12 @@ int main(int, char**){
         std::cerr << "Weight load error: " << ex.what() << std::endl;
     }
 
+    try {
+        array.initInputs(weights);
+    } catch(std::exception& ex) {
+        std::cerr << "Input buffer init error: " << ex.what() << std::endl;
+    }
+
     array.logState();
 
     return 0;
